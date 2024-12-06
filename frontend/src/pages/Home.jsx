@@ -16,9 +16,18 @@ function Home(){
         {id: 13, title: "Tought Break" ,release_date: "2015"},
         {id: 13, title: "The Meet Your Match" ,release_date: "2016"},
         {id: 13, title: "The Jungle Inferno" ,release_date: "2017"},
-    ]
+    ];
+    const handleSearch = () => {
+
+    }
     return (
     <div className ="home">
+        <form onSubmit={handleSearch} className="search-form">
+            <input 
+            type="text" 
+            placeholder="Search for movie..." 
+            className="search-input"/>
+        </form>
         <div className="movies-grid">
             {movies.map(movie =>(<MovieCard movie={movie} key={movie.id}/>
         ))}
