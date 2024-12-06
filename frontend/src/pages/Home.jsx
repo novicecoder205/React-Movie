@@ -1,5 +1,7 @@
 import MovieCard from "../components/MovieCard"
+import { useState } from "react";
 function Home(){
+    const [searchQuery, setSearchQuery] = useState("");
     const movies = [
         {id: 1, title: "Australian Christmas", release_date: "2010"},
         {id: 2, title: "The Hatless", release_date: "2011"},
@@ -14,26 +16,41 @@ function Home(){
         {id: 11, title: "Gun Mettle" ,release_date: "2015"},
         {id: 12, title: "Invasion" ,release_date: "2015"},
         {id: 13, title: "Tought Break" ,release_date: "2015"},
-        {id: 13, title: "The Meet Your Match" ,release_date: "2016"},
-        {id: 13, title: "The Jungle Inferno" ,release_date: "2017"},
+        {id: 14, title: "The Meet Your Match" ,release_date: "2016"},
+        {id: 15, title: "The Jungle Inferno" ,release_date: "2017"},
     ];
-    const handleSearch = () => {
-
-    }
+    const handleSearch = (e) => {
+        e.preventDefault();
+        alert(searchQuery);
+        setSearchQuery("");
+    };
     return (
     <div className ="home">
         <form onSubmit={handleSearch} className="search-form">
-            <input 
+          <input 
             type="text" 
             placeholder="Search for movie..." 
-            className="search-input"/>
+            className="search-input"
+            value = {searchQuery}
+            onChange={(e)=>setSearchQuery(e.target.value)}
+            />
+            
+            <button type ="submit" className="search-button">
+                Search
+            </button>
         </form>
+
         <div className="movies-grid">
-            {movies.map(movie =>(<MovieCard movie={movie} key={movie.id}/>
-        ))}
+            {movies.map(
+                (movie) =>
+                    //47:58
+                  movie.title.toLowerCase().startsWith(searchQuery) && (
+                    <MovieCard movie={movie} key={movie.id}/>  
+                )
+        )}
         </div>
     </div>
     );
 }
 
-export default Home
+export default Home;
