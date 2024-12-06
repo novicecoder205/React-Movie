@@ -17,9 +17,14 @@ function Home(){
         {id: 13, title: "The Meet Your Match" ,release_date: "2016"},
         {id: 13, title: "The Jungle Inferno" ,release_date: "2017"},
     ]
-    return <div className ="home">
+    return (
+    <div className ="home">
         <div className="movies-grid">
-            {movies.map(movie =><MovieCard movie={movie} key={movie.id}/>)}
+            {movies.map(movie =>(<MovieCard movie={movie} key={movie.id}/>
+        ))}
         </div>
     </div>
+    );
 }
+
+export default Home
