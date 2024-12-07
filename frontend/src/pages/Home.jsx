@@ -44,7 +44,8 @@ function Home(){
             {movies.map(
                 (movie) =>
                     //47:58
-                  movie.title.toLowerCase().startsWith(searchQuery) && (
+                  //movie.title.toLowerCase().startsWith(searchQuery) && 
+                (
                     <MovieCard movie={movie} key={movie.id}/>  
                 )
         )}
